@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <title>Gio AI — Local chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="Gio AI home">
+        <span class="brand-mark">g<span>.</span></span>
+        <span class="brand-name">gio<span>ai</span></span>
+      </a>
+      <button class="new-chat" id="new-chat"><span class="plus">＋</span> New chat <kbd>⌘ K</kbd></button>
+      <div class="sidebar-label">YOUR SPACE</div>
+      <div class="chat-history" id="chat-history"><div class="empty-history">Your conversations<br>will show up here.</div></div>
+      <div class="sidebar-bottom">
+        <div class="local-note"><span class="pulse-dot"></span><span><strong>Running locally</strong><small>Your chats stay on this device</small></span></div>
+        <a class="github-link" href="https://ollama.com/library" target="_blank" rel="noreferrer">Explore Ollama models <span>↗</span></a>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open menu">☰</button>
+        <div class="model-picker-wrap"><span class="model-status"></span><select id="model-select" aria-label="Choose a model"><option value="">Loading models…</option></select><span class="chevron">⌄</span></div>
+        <div class="topbar-right"><span class="privacy-label"><span>▣</span> Private by default</span><button class="icon-button" id="clear-chat" title="Clear conversation" aria-label="Clear conversation">⌫</button></div>
+      </header>
+
+      <section class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon"><span>g</span><i></i></div>
+          <p class="eyebrow">YOUR LOCAL AI, READY WHEN YOU ARE</p>
+          <h1>A little more<br><em>intelligence.</em></h1>
+          <p class="welcome-copy">A quiet space to think, create, and figure things out.<br>Your conversations stay right here on your machine.</p>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Help me brainstorm a fun weekend project."><span>✳</span> Brainstorm ideas</button>
+            <button class="suggestion" data-prompt="Explain a difficult concept in simple terms."><span>⌘</span> Learn something new</button>
+            <button class="suggestion" data-prompt="Help me write a thoughtful message to a friend."><span>↗</span> Find the right words</button>
+          </div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <div class="composer-area">
+        <form class="composer" id="chat-form">
+          <textarea id="message-input" rows="1" placeholder="Ask anything…" aria-label="Message Gio AI"></textarea>
+          <div class="composer-footer"><span class="composer-hint"><kbd>↵</kbd> to send <span class="hint-divider">·</span> <kbd>shift ↵</kbd> for new line</span><button class="send-button" id="send-button" type="submit" aria-label="Send message"><span>↑</span></button></div>
+        </form>
+        <p class="disclaimer">Gio AI can make mistakes. Check important information.</p>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
